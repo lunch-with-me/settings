@@ -101,7 +101,7 @@ const Screen4_StackNavigator = createStackNavigator({
       title: 'Settings',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#a98274',
+        backgroundColor: 'rgba(10,10,10,0)',
       },
       headerTintColor: '#fff',
     }),
