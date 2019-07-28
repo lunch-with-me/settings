@@ -21,6 +21,7 @@ import Screen1 from './pages/Screen1';
 import Screen2 from './pages/Screen2';
 import Screen3 from './pages/Screen3';
 import Screen4 from './pages/Screen4';
+import Preferences from './pages/Preferences';
  
  
 class NavigationDrawerStructure extends Component {
@@ -99,6 +100,21 @@ const Screen4_StackNavigator = createStackNavigator({
     screen: Screen4,
     navigationOptions: ({ navigation }) => ({
       title: 'Settings',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: 'rgba(10,10,10,0)',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
+
+const Screen5_StackNavigator = createStackNavigator({
+ 
+  Fifth: {
+    screen: Preferences,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Preferences',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: 'rgba(10,10,10,0)',
@@ -321,7 +337,18 @@ const DrawerNavigatorExample = createDrawerNavigator({
         />)
     },
   },
-
+  Screen5: {
+   
+    screen: Screen5_StackNavigator,
+    navigationOptions: {
+      drawerLabel: 'preferences',
+      drawerIcon: ({ tintColor }) => (
+        <Image
+          source={require('./image/home2.png')}
+          style={[styles.icon, {tintColor: tintColor}]}
+        />)
+    },
+  },
 
 
 
