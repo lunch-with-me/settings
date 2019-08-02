@@ -62,7 +62,7 @@ export default class Screen2 extends Component {
           
           <View style={{flexDirection:'row'}}>
           <View style={{padding:10}}>
-          <Text style={{marginTop:18}}>Hide Full Name</Text>
+          <Text style={{marginTop:18}}>For Messages</Text>
           </View>
           <View style={{flex:1,alignItems:'center',justifyContent:'center',marginLeft:'45%',marginRight:10}}>
               <SwitchToggle
@@ -98,7 +98,7 @@ export default class Screen2 extends Component {
               
               <View style={{flexDirection:'row'}}>
           <View style={{padding:10}}>
-          <Text style={{marginTop:18}}>Hide mobile Number</Text>
+          <Text style={{marginTop:18}}>For likes              </Text>
           </View>
           <View style={{flex:1,alignItems:'center',justifyContent:'center',marginLeft:'35%',marginRight:10}}>
               <SwitchToggle
@@ -130,7 +130,7 @@ export default class Screen2 extends Component {
 
             <View style={{flexDirection:'row'}}>
           <View style={{padding:10}}>
-          <Text style={{marginTop:18}}>Hide Email Address</Text>
+          <Text style={{marginTop:18}}>For superlikes  </Text>
           </View>
           <View style={{flex:1,alignItems:'center',justifyContent:'center',marginLeft:'35%',marginRight:10}}>
               <SwitchToggle
