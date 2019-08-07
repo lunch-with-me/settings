@@ -7,6 +7,7 @@ import DatePicker from 'react-native-datepicker';
 import { Dropdown } from 'react-native-material-dropdown';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import SwitchToggle from 'react-native-switch-toggle';
+import RadioGroup from 'react-native-radio-buttons-group';
 //import {EditProfile} from './pages/EditProfile';
 //import {ImagePicker} from 'react-native-image-picker';
 //var ImagePicker = require('react-native-image-picker');
@@ -16,18 +17,34 @@ import SwitchToggle from 'react-native-switch-toggle';
 }
   constructor(props){
     super(props)
-    //set value in state for initial date
-    this.state = {date:"15-05-2018"}
+      this.state = {date:"15-05-1990",
+      fullName:'Nethmee Sellahewa',
+      TextFullName:false,
+      occupation:'student',
+      Address:'927/15,Udawatta Rd,Malabe.',
+      TextAddress:false,
+      Telephone:'0773827492',
+      TextTelephone:false,
+      Email:'nssellahewa@gmail.com',
+      TextEmail:false,
+      TextDescriptiion:false,
+      Description:'I am a software gfgfgfddddddddddddddddddddddddd engineer ``'
 
-  }
-  state={
-      occupation:'student'
-  }
-
-  pickImage(){
     
+    
+    }
+    
+    //set value in state for initial date
+   
+    //this.state={occupation:'student'}
+    //this.EditFullName = this.EditFullName.bind(this)
   }
+  
+ 
+  
+  
   render() {
+    
     let data = [{
       value: 'Student',
     }, {
@@ -64,21 +81,42 @@ import SwitchToggle from 'react-native-switch-toggle';
         
       
       <View style={styles.heading}>
-      <Text style={styles.headingText}>Nethme Sellahewa</Text>
+      <Text style={styles.headingText}>Nethmee Sellahewa</Text>
       <Text style={styles.bio}>"bla bla bla"</Text>
       
       </View>
       
       <ScrollView>
       <View style={styles.body}>
+   
           <View style={styles.cardP}>
-          <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+          {/* <KeyboardAvoidingView style={styles.container} behavior="padding" enabled> */}
             <Text styles={styles.bio}>Personal Details</Text>
             <View>
               <Text>Full Name:</Text>
-              <TextInput/>
-              <Text>Date of Birth:</Text>
+             <View style={{flexDirection:'row'}}> 
+              <View>
+              <TextInput
+                 value={this.state.fullName}
+                 editable={this.state.TextFullName}
+                 onChangeText={(fullName)=>this.setState({fullName})}
+
+              />
+              </View>
+              <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextFullName:!this.state.TextFullName})}
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIcon}
+
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
               
+              <Text>Date of Birth:</Text>
+              <View style={{flexDirection:'row'}}> 
+              <View>
 
                 <DatePicker
           style={{width: 200}}
@@ -86,7 +124,7 @@ import SwitchToggle from 'react-native-switch-toggle';
           mode="date" //The enum of date, datetime and time
           placeholder="select date"
           format="DD-MM-YYYY"
-          minDate="01-01-2016"
+          minDate="01-01-1990"
           maxDate="01-01-2019"
           confirmBtnText="Confirm"
           cancelBtnText="Cancel"
@@ -103,39 +141,118 @@ import SwitchToggle from 'react-native-switch-toggle';
           }}
           onDateChange={(date) => {this.setState({date: date})}}
         />
-             <Text>Address:</Text> 
-             <TextInput/>
+        </View>
+              <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextFullName:!this.state.TextFullName})}
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIcon}
+
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
+              <Text>Gender:</Text>
+             
+
+             <Text>Address:</Text>
+             <View style={{flexDirection:'row'}}> 
+              <View> 
+             <TextInput
+                value={this.state.Address}
+                 editable={this.state.TextAddress}
+                 onChangeText={(Address)=>this.setState({Address})}
+             />
+             </View>
+             <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextAddress:!this.state.TextAddress})}
+
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIcon}
+
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
              <Text>Telephone number:</Text> 
-             <TextInput/>
+             <View style={{flexDirection:'row'}}> 
+              <View> 
+             <TextInput
+               value={this.state.Telephone}
+               editable={this.state.TextTelephone}
+               onChangeText={(Telephone)=>this.setState({Telephone})}
+             />
+             </View>
+             <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextTelephone:!this.state.TextTelephone})}
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIcon}
+
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
              <Text>Email:</Text> 
-             <TextInput/>
+             <View style={{flexDirection:'row'}}> 
+              <View> 
+             <TextInput
+                value={this.state.Email}
+                editable={this.state.TextEmail}
+               onChangeText={(Email)=>this.setState({Email})}
+             />
+             </View>
+             <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextEmail:!this.state.TextEmail})}
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIcon}
+
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
+         
+
              <Text>Occupation:</Text> 
+             
              <Dropdown
       
                 data={data}
+                editable={false}
               />
               <Text>Description about the job:</Text>
+              <View style={{flexDirection:'row'}}>
+              <View>
               <TextInput
                 multiline={true}
                 numberOfLines={3}
-                style={{}}
+                editable={false}
+                onChangeText={(txt)=>this.setState({Description:txt})}
+                value={this.state.Description}
               />
+              </View>
+                <View>
+                <TouchableOpacity
+                onPress={()=>this.setState({TextDescription:!this.state.TextDescriptiion})}
+               >
+                  <Image source={require('../image/pencil.png')} style={styles.pencilIconD}
 
+                  />
+                </TouchableOpacity>
+              </View>
+              </View>
+                <Text>Description about the job:</Text>
              
              
             </View>
-            </KeyboardAvoidingView>
+            {/* </KeyboardAvoidingView> */}
           </View>
-
+          
       </View>
       </ScrollView>
-      <TouchableOpacity
-         style={styles.button}
-         onPress={this.onPress}
-       >
-         <Text> Touch Here </Text>
-       </TouchableOpacity>
-   
+      
       </View>
 
     );
@@ -196,6 +313,7 @@ class ProfileSettings extends React.Component {
   render() {
     return (
       <View style={styles1.mainContainer}>
+      <ImageBackground source={require('../image/back.jpg')}  style={{width: '100%', height:'100%'}}>
       <ScrollView>
         <Text style={{ fontSize: 15,marginLeft:'10%',marginRight:'5%',marginTop:'5%', }}> You can alaways control what people see on your profile.</Text>
         <View style={styles1.contentBox1}>
@@ -466,6 +584,7 @@ class ProfileSettings extends React.Component {
 
         </View>
         </ScrollView>
+        </ImageBackground>
       </View>
     );
   }
@@ -536,19 +655,29 @@ const styles = StyleSheet.create({
     backgroundColor: '#DDDDDD',
     padding: 10
   },
+  pencilIcon:{
+    marginTop:15,
+    marginLeft:150,
+  },
+  pencilIconD:{
+    marginTop:15,
+    marginLeft:150,
+  },
   card1:{
-    elevation:8,
+    elevation:12,
     width:'100%',
     height:'50%'
 
   },
   cardP:{
-    width:'100%',
+    width:'90%',
     backgroundColor:'#ffffff',
     borderColor:'#efdcd5',
     borderStyle:'solid',
     marginTop:'5%',
-    height:500,
+    //height:500,
+    elevation:13,
+    padding:'5%',
 
   },
   body:{
@@ -581,7 +710,7 @@ const styles = StyleSheet.create({
   },
   ovalBack:{
       width:'100%',
-      height:'25%',
+      height:'30%',
       backgroundColor:'#222222',
       //borderBottomStartRadius:200,
       //borderBottomEndRadius:200,
@@ -594,7 +723,7 @@ const styles = StyleSheet.create({
   ovalBack2:{
     width:'100%',
     height:'100%',
-    backgroundColor:'rgba(0,0,0,0.7)',
+    backgroundColor:'rgba(0,0,0,0.6)',
     //borderBottomStartRadius:170,
     //borderBottomEndRadius:170,
     marginTop:0,
@@ -620,7 +749,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#FF355E',
     marginTop:70,
    // overflow:'visible',
-    elevation:5,
+    elevation:10,
     marginLeft:25,
     marginRight:25,
 
